@@ -1,0 +1,76 @@
+body{
+    background-color: #ECFCCA;
+}
+
+  
+  .container{
+    background-color: #fff;
+    max-width: 43rem;
+    height: 20rem;
+    padding: 1.5rem;
+    padding-bottom: 0;
+    margin: 0 auto;
+}
+
+header{
+    border-bottom: 2px solid #ECFCCA;
+padding-bottom: 2rem;
+}
+
+.txt-input{
+    width: 35rem;
+    height: 3rem;
+    border: 0;
+    border-radius: 9px;
+    background-color: #ECFCCA;
+    padding: 0 1rem;
+    font-size: 1.1rem;
+}
+
+.submit-input{
+    width: 5rem;
+    height: 3rem;
+    border-radius: 0.7rem;
+    background-color: #7DCEA0;
+    font-size: 1rem;
+    border: 0;
+    margin-left: 0.3rem;
+}
+
+main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1{
+    font-weight: bolder;
+    font-size: 3.3rem;
+}
+
+footer{
+    border-top: 2px solid #ECFCCA;
+    padding-top: 1rem;
+}
+
+p,
+footer{
+    color: grey;
+}
+
+p span{
+    color: #1E8449;
+}
+
+footer a{
+    color: #1E8449;
+}
+
+.main-right{
+    font-weight: bold;
+    font-size: 3.5rem;
+}
+
+.main-right .temperature-sign{
+    font-size: 2rem;
+}
