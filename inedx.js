@@ -52,7 +52,7 @@ time.innerHTML=`${day} ${Hours}:${Minute}`;
 function changeUrl(city){
 
 let myApi='c788bbe4fbob842f25a727737f00tc5e';
-let Url=`https://api.shecodes.io/weather/v1/current?query=${city}&key=${myApi}&units=imperial`;
+let Url=`https://api.shecodes.io/weather/v1/current?query=${city}&key=${myApi}&units=metric`;
 axios.get(Url).then(changeTemperature);
 };
 
@@ -61,9 +61,50 @@ function changeCity(event){
 
 event.preventDefault();
 let textInput=document.querySelector("#text-input");
-changeUrl(textInput.value)    
+changeUrl(textInput.value)
+getUrl(textInput.value)    
 };
 
 
 let searchForm=document.querySelector("#search-form");
 searchForm.addEventListener("submit",changeCity);
+
+                                        // forcast part
+
+function getDay(time){
+
+    let newTime=new Date(time * 1000);
+    let weekDays=["Wed","Thu","Fri","Sat","Sun","Mon","Tus"];
+   return weekDays[newTime.getDay()];
+}
+
+function getForcast(response){
+
+let forcastHtml="";
+
+response.data.daily.forEach(function(day,index){
+
+if(index < 5){
+forcastHtml=forcastHtml+`
+    <div class="forcast-item">
+            <strong class="forcast-day">${getDay(day.time)}</strong>
+            <div class="forcast-img">
+            <img class="image" src="${day.condition.icon_url}">
+            </div>
+        <div class="forcast-degree">
+        <div>${Math.round(day.temperature.maximum)}°</div>
+        <div>${Math.round(day.temperature.minimum)}°</div>
+        </div>
+    </div>
+`
+}
+});
+let forcastDiv=document.querySelector("#forcast-div");
+forcastDiv.innerHTML=forcastHtml;
+};
+
+function getUrl(city){
+    let myApi="c788bbe4fbob842f25a727737f00tc5e";
+    let Url=`https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${myApi}&units=metric`;
+    axios.get(Url).then(getForcast);
+};
